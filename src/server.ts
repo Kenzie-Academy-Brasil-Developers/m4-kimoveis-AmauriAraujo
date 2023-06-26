@@ -2,13 +2,13 @@ import app from "./app";
 import { AppDataSource } from "./data-source";
 
 AppDataSource.initialize()
-  .then((): void => {
-    console.log("Server is running");
+  .then(async ()=> {
+    console.log("Database conected");
 
-    const PORT: number = Number(process.env.PORT) || 3000;
+    const PORT= process.env.PORT || 3000;
 
     app.listen(PORT, () => {
-      console.log("Servidor executando");
+      console.log(`App is running on port ${PORT}`);
     });
   })
   .catch((err: unknown): void => {

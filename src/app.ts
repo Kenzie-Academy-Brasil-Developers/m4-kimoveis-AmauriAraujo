@@ -1,8 +1,7 @@
-import "reflect-metadata";
 import "express-async-errors";
-import express from "express";
+import express, { Application } from "express";
 
-const app = express();
+const app :Application = express();
 app.use(express.json());
 
 export default app;
