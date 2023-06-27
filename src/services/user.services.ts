@@ -1,7 +1,7 @@
 import { AppDataSource } from "../data-source";
 import { User } from "../entities";
-import { UserCreate, UserRepo, UserReturn } from "../interfaces";
-import { userReturnSchema } from "../schemas";
+import { UserCreate, UserRead, UserRepo, UserReturn } from "../interfaces";
+import { userReadSchema, userReturnSchema } from "../schemas";
 
 const create = async (payload: UserCreate): Promise<UserReturn> => {
     const userRepository:UserRepo= AppDataSource.getRepository(User);
@@ -11,4 +11,9 @@ const create = async (payload: UserCreate): Promise<UserReturn> => {
     return userReturnSchema.parse(user);
   };
 
-  export default {create}
+  const read = async (): Promise<UserRead> => {
+    const userRepository:UserRepo= AppDataSource.getRepository(User);
+    return userReadSchema.parse(await userRepository.find());
+  };
+
+  export default {create,read}
