@@ -1,3 +1,3 @@
 import { userRouter } from "./user.routers"
-
-export { userRouter };
+import { sessionRouter } from "./session.router";
+export { userRouter,sessionRouter };
