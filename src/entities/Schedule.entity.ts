@@ -1,15 +1,15 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("schedules")
-class Schedul {
+class Schedule {
   @PrimaryGeneratedColumn("increment")
   id: number;
 
   @Column({ type: "date" })
   date: string;
 
-  @Column({ type: "timestamp" })
+  @Column({ type: "time" })
   hour: string;
 }
 
-export default Schedul;
+export default Schedule;

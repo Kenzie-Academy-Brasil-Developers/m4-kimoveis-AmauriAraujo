@@ -11,14 +11,15 @@ class Address {
   @Column({ length: 8 })
   zipCode: string;
 
-  @Column({ length: 7, nullable:true})
-  number: string;
+  @Column({ type:"varchar",length: 7, nullable:true})
+  number?:string|null|undefined;
 
   @Column({ length: 20 })
   city: string;
 
   @Column({ length: 2 })
   state: string;
+
 }
 
 export default Address;

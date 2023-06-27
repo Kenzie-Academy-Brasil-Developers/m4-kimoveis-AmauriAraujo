@@ -2,12 +2,17 @@ import {
   Column,
   CreateDateColumn,
    Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import Address from "./Address.entity";
+import Category from "./Category.entity";
 
 @Entity("real_estate")
-class RealState {
+class RealEstate {
   @PrimaryGeneratedColumn("increment")
   id: number;
 
@@ -19,9 +24,9 @@ class RealState {
     precision: 12,
     scale: 2,
     default: 0,
-    nullable: true,
+    
   })
-  value: number | null | undefined;
+  value: number|string;
 
   @Column({ type: "integer" })
   size: number;
@@ -31,6 +36,13 @@ class RealState {
 
   @UpdateDateColumn({ type: "date" })
   updatedAt: string;
+
+  @OneToOne(()=> Address)
+  @JoinColumn()
+  Address:Address
+
+  @ManyToOne(()=>Category)
+  Category:Category
 }
 
-export default RealState;
+export default RealEstate;
