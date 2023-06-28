@@ -2,7 +2,11 @@ import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 import { AppError } from "../errors";
 
-export const verifyToken = (req: Request, res: Response, next: NextFunction): void => {
+export const verifyToken = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
   const authorization: string | undefined = req.headers.authorization;
   if (!authorization) throw new AppError("Missing bearer token", 401);
 

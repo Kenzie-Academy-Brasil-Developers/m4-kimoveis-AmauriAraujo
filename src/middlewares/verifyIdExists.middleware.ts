@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { User } from "../entities";
 import { UserRepo } from "../interfaces";
 import { AppDataSource } from "../data-source";
+import { AppError } from "../errors";
 
 export const idExists = async (
   req: Request,
@@ -10,10 +11,11 @@ export const idExists = async (
 ): Promise<void> => {
   const id: number = Number(req.params.id);
 
-  const userRepository:UserRepo= AppDataSource.getRepository(User)
+  const userRepository: UserRepo = AppDataSource.getRepository(User);
 
   const foundEntity: User | null = await userRepository.findOneBy({ id });
-  if (!foundEntity) throw new Error("User not found");
+
+  if (!foundEntity) throw new AppError("User not found", 404);
 
   res.locals = { ...res.locals, foundEntity };
 

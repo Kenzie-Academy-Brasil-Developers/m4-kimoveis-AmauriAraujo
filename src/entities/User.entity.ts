@@ -10,8 +10,6 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 
-
-
 @Entity("users")
 class User {
   @PrimaryGeneratedColumn("increment")
@@ -48,6 +46,4 @@ class User {
   }
 }
 
-
-
-export default User
+export default User;

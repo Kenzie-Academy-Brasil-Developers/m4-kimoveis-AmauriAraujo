@@ -6,6 +6,5 @@ export const validateBody =
   (req: Request, res: Response, next: NextFunction): void => {
     req.body = schema.parse(req.body);
 
-
     return next();
   };

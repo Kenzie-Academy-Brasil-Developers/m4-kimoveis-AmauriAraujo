@@ -1,6 +1,6 @@
 import "dotenv/config";
 import path from "path";
-import "reflect-metadata"
+import "reflect-metadata";
 import { DataSource, DataSourceOptions } from "typeorm";
 
 const settings = (): DataSourceOptions => {

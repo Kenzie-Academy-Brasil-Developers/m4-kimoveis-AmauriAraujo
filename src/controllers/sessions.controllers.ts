@@ -3,10 +3,9 @@ import { SessionReturn } from "../interfaces/sessions.interfaces";
 import { sessionServices } from "../services";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
-  
-    const token: SessionReturn = await sessionServices.create(req.body);
-  
-    return res.status(200).json(token);
-  };
+  const token: SessionReturn = await sessionServices.create(req.body);
 
-  export default{create}
+  return res.status(200).json(token);
+};
+
+export default { create };

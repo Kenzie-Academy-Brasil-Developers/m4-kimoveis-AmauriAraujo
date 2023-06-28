@@ -13,7 +13,7 @@ export const handleError = (
   }
 
   if (error instanceof ZodError) {
-    return res.status(400).json({message:error.flatten().fieldErrors});
+    return res.status(400).json({ message: error.flatten().fieldErrors });
   }
 
   console.error(error);

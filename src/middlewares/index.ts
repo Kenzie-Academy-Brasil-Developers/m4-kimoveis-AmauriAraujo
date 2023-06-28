@@ -4,5 +4,5 @@ import { verifyEmailExists } from "./verifyEmailExist.middleware";
 import { idExists } from "./verifyIdExists.middleware";
 import { verifyAdmin } from "./verifyAdmin.middleware";
 import { verifyToken } from "./verifyToken.middleware";
-
-export default{handleError,validateBody,verifyEmailExists,idExists,verifyAdmin,verifyToken}
+import { verifyNameExists } from "./veryfyCategoryNameExists";
+export default{handleError,validateBody,verifyEmailExists,idExists,verifyAdmin,verifyToken,verifyNameExists}

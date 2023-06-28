@@ -1,7 +1,7 @@
 import {
   Column,
   CreateDateColumn,
-   Entity,
+  Entity,
   JoinColumn,
   ManyToOne,
   OneToOne,
@@ -24,9 +24,8 @@ class RealEstate {
     precision: 12,
     scale: 2,
     default: 0,
-    
   })
-  value: number|string;
+  value: number | string;
 
   @Column({ type: "integer" })
   size: number;
@@ -37,12 +36,12 @@ class RealEstate {
   @UpdateDateColumn({ type: "date" })
   updatedAt: string;
 
-  @OneToOne(()=> Address)
+  @OneToOne(() => Address)
   @JoinColumn()
-  Address:Address
+  Address: Address;
 
-  @ManyToOne(()=>Category)
-  Category:Category
+  @ManyToOne(() => Category)
+  Category: Category;
 }
 
 export default RealEstate;

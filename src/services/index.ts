@@ -1,3 +1,4 @@
 import userServices from "./user.services";
 import sessionServices from "./session.services";
-export {userServices,sessionServices}
+import categoryServices from "./category.services";
+export {userServices,sessionServices,categoryServices}
