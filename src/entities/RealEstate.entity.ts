@@ -4,12 +4,14 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import Address from "./Address.entity";
 import Category from "./Category.entity";
+import Schedule from "./Schedule.entity";
 
 @Entity("real_estate")
 class RealEstate {
@@ -40,8 +42,11 @@ class RealEstate {
   @JoinColumn()
   Address: Address;
 
-  @ManyToOne(() => Category)
+  @ManyToOne(() => Category,(c)=>c.real_estates)
   Category: Category;
+
+  @OneToMany(()=>Schedule,(sh)=>sh.real_estate)
+  schedules: Array<Schedule>
 }
 
 export default RealEstate;
