@@ -5,4 +5,5 @@ const sessionCreateSchema = z.object({
   password: z.string().max(120),
 });
 
+
 export { sessionCreateSchema };

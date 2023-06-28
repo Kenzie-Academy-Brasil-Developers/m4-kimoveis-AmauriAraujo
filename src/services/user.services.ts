@@ -25,21 +25,6 @@ const read = async (): Promise<UserRead> => {
 };
 
 const update = async (user: User, payload: UserUpdate): Promise<UserReturn> => {
-  //   const {admin}=user
-
-  // if(payload.admin){
-  //  throw new AppError("Admin not possible upadate",404)
-  // }
-
-  // if(!admin){
-
-  //   const repo: UserRepo = AppDataSource.getRepository(User);
-
-  //   const userUpd:User=await repo.save({...user,...payload});
-
-  //   return userReturnSchema.parse(userUpd);
-
-  // }
 
   const repo: UserRepo = AppDataSource.getRepository(User);
 

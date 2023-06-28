@@ -7,6 +7,8 @@ export const verifyAdmin = async (
   next: NextFunction
 ): Promise<void> => {
   const { admin } = res.locals.decoded;
+  
+  
 
   if (!admin) throw new AppError("Insufficient permission", 403);
 

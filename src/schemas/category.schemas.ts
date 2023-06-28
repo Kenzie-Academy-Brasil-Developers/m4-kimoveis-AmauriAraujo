@@ -5,4 +5,6 @@ const categorySchema = z.object({
   name: z.string().max(45),
 });
 
-export{categorySchema}
+const categoryReadSchema = categorySchema.array();
+
+export{categorySchema,categoryReadSchema}
