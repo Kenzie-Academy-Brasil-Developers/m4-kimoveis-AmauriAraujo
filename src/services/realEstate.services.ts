@@ -3,8 +3,10 @@ import { Address, Category, RealEstate } from "../entities";
 import { AppError } from "../errors";
 import {
   CategoryRepo,
+  addressCreate,
   addressRepo,
   realEstateCreate,
+  realEstateRead,
   realEstateRepo,
 } from "../interfaces";
 
@@ -17,11 +19,30 @@ const create = async (payload: realEstateCreate): Promise<RealEstate> => {
   const realEstateRepository: realEstateRepo =
     AppDataSource.getRepository(RealEstate);
 
-  const address: Address | null = await addressRepository.findOneBy({
-    id: Number(payload.addressId),
+  const verifyAddress: Address | null = await addressRepository.findOneBy({
+    number: String(payload.address.number),
+  });
+  const verifyAddressStreet: Address | null = await addressRepository.findOneBy(
+    { street: payload.address.street }
+  );
+  const verifyAddressCity: Address | null = await addressRepository.findOneBy({
+    city: payload.address.city,
+  });
+  const verifyAddressState: Address | null = await addressRepository.findOneBy({
+    state: payload.address.state,
   });
 
-  // if (!address) throw new AppError("Address not found", 404);
+  if (
+    verifyAddress &&
+    verifyAddressStreet &&
+    verifyAddressCity &&
+    verifyAddressState
+  )
+    throw new AppError("Address already exists", 409);
+
+  const address: addressCreate = addressRepository.create(payload.address);
+
+  await addressRepository.save(address);
 
   const category: Category | null = await categoryRepository.findOneBy({
     id: Number(payload.categoryId),
@@ -31,12 +52,20 @@ const create = async (payload: realEstateCreate): Promise<RealEstate> => {
 
   const realEstate: RealEstate = realEstateRepository.create({
     ...payload,
-    // Address: address,
-    Category: category,
+    address: address,
+    category: category,
   });
   await realEstateRepository.save(realEstate);
 
   return realEstate;
 };
 
-export default {create}
+const read = async (): Promise<realEstateRead> => {
+  const realEstateRepository: realEstateRepo=
+    AppDataSource.getRepository(RealEstate);
+    
+  return await realEstateRepository.find();
+};
+
+
+export default { create,read };

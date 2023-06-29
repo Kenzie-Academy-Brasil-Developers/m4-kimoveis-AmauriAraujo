@@ -11,10 +11,16 @@ import {
   categoryReadSchema,
   CategoryReturnSchema,
 } from "./category.schemas";
-import { addressSchema } from "./address.schema";
-import { realEstateSchema, realEstateCreateSchema } from "./realEstate.schemas";
+import { addressSchema, addressCreateSchema } from "./address.schema";
+import {
+  realEstateSchema,
+  realEstateCreateSchema,
+  realEstateReturnSchema,
+  realEstateReadSchema,
+} from "./realEstate.schemas";
 
 export {
+  realEstateReturnSchema,
   userSchema,
   userCreateSchema,
   userUpdateSchema,
@@ -27,4 +33,6 @@ export {
   addressSchema,
   realEstateCreateSchema,
   realEstateSchema,
+  addressCreateSchema,
+  realEstateReadSchema,
 };

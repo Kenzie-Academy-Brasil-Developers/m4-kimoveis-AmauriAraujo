@@ -5,8 +5,14 @@ const categorySchema = z.object({
   name: z.string().max(45),
 });
 
+const categoryCreateSchema = categorySchema.omit({ id: true });
 const categoryReadSchema = categorySchema.array();
 
-const CategoryReturnSchema= categorySchema.omit({name:true,id:true})
+const CategoryReturnSchema = categorySchema.omit({ name: true, id: true });
 
-export{categorySchema,categoryReadSchema,CategoryReturnSchema}
+export {
+  categorySchema,
+  categoryReadSchema,
+  CategoryReturnSchema,
+  categoryCreateSchema,
+};

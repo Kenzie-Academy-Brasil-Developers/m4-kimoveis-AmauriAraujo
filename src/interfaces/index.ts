@@ -12,8 +12,13 @@ import {
   CategoryRead,
   CategoryReturn,
 } from "./category.interfaces";
-import { realEstateCreate, realEstateRepo } from "./realEstate.interfaces";
-import { addressRepo } from "./address.interfaces";
+import {
+  realEstateCreate,
+  realEstateRepo,
+  realEstateReturn,
+  realEstateRead,
+} from "./realEstate.interfaces";
+import { addressRepo, addressCreate } from "./address.interfaces";
 
 export {
   UserCreate,
@@ -30,4 +35,7 @@ export {
   realEstateCreate,
   realEstateRepo,
   addressRepo,
+  addressCreate,
+  realEstateReturn,
+  realEstateRead,
 };

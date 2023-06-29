@@ -7,7 +7,7 @@ import {
   CategoryReturn,
   categoryCreate,
 } from "../interfaces";
-import { CategoryReturnSchema, categorySchema } from "../schemas";
+import { categorySchema } from "../schemas";
 
 const create = async (payload: categoryCreate): Promise<categoryCreate> => {
   const categoryRepository: CategoryRepo =

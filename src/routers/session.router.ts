@@ -10,3 +10,4 @@ sessionRouter.post(
   middlewares.validateBody(sessionCreateSchema),
   sessionsControllers.create
 );
+

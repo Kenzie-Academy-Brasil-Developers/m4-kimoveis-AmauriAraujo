@@ -40,10 +40,10 @@ class RealEstate {
 
   @OneToOne(() => Address)
   @JoinColumn()
-  Address: Address;
+  address: Address;
 
   @ManyToOne(() => Category,(c)=>c.realEstate)
-  Category: Category;
+  category: Category;
 
   @OneToMany(()=>Schedule,(sh)=>sh.real_estate)
   schedules: Array<Schedule>

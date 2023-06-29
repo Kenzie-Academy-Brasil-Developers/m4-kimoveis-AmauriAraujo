@@ -9,4 +9,6 @@ const addressSchema = z.object({
   state: z.string().max(2),
 });
 
-export { addressSchema };
+const addressCreateSchema=addressSchema.omit({id:true})
+
+export { addressSchema,addressCreateSchema };
