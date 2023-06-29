@@ -11,4 +11,6 @@ categoryRouter.post(
 
 categoryRouter.get("",categoryControllers.read)
 
+categoryRouter.get("/:id/realEstate",categoryControllers.retrieve)
+
 export { categoryRouter };
