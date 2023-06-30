@@ -19,6 +19,12 @@ import {
   realEstateReadSchema,
 } from "./realEstate.schemas";
 
+import {
+  scheduleCreateSchema,
+  scheduleReturnSchema,
+  scheduleSchema,
+} from "./schedule.schema";
+
 export {
   realEstateReturnSchema,
   userSchema,
@@ -35,4 +41,7 @@ export {
   realEstateSchema,
   addressCreateSchema,
   realEstateReadSchema,
+  scheduleCreateSchema,
+  scheduleReturnSchema,
+  scheduleSchema,
 };

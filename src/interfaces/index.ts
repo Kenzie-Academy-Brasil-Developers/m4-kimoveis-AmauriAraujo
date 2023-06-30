@@ -19,7 +19,11 @@ import {
   realEstateRead,
 } from "./realEstate.interfaces";
 import { addressRepo, addressCreate } from "./address.interfaces";
-
+import {
+  ScheduleReturn,
+  scheduleRepository,
+  ScheduleCreate,
+} from "./schedule.interface";
 export {
   UserCreate,
   UserRead,
@@ -38,4 +42,7 @@ export {
   addressCreate,
   realEstateReturn,
   realEstateRead,
+  scheduleRepository,
+  ScheduleCreate,
+  ScheduleReturn,
 };
