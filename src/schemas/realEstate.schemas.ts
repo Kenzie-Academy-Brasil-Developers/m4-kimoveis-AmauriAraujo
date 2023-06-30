@@ -1,4 +1,4 @@
-import { number, z } from "zod";
+import { z } from "zod";
 import { categoryCreateSchema, categorySchema } from "./category.schemas";
 import { addressCreateSchema, addressSchema } from "./address.schema";
 
@@ -31,7 +31,9 @@ const realEstateReturnSchema = realEstateSchema
     address: addressCreateSchema,
   });
 
-const realEstateReadSchema = realEstateSchema.array();
+const realEstateReadSchema = realEstateSchema
+  .extend({ realEstateReturnSchema })
+  .array();
 
 export {
   realEstateCreateSchema,

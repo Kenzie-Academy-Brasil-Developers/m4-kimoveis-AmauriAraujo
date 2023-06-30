@@ -1,6 +1,6 @@
 import "express-async-errors";
 import express, { Application } from "express";
-import { categoryRouter, realEstateRouter, sessionRouter, userRouter } from "./routers";
+import { categoryRouter, realEstateRouter, scheduleRouter, sessionRouter, userRouter } from "./routers";
 import middlewares from "./middlewares";
 
 const app: Application = express();
@@ -13,6 +13,8 @@ app.use("/login", sessionRouter);
 app.use("/categories", categoryRouter);
 
 app.use("/realEstate",realEstateRouter)
+
+app.use("/schedules",scheduleRouter)
 
 app.use(middlewares.handleError);
 

@@ -6,11 +6,14 @@ const categoryRouter: Router = Router();
 
 categoryRouter.post(
   "",
-  middlewares.verifyToken,middlewares.verifyAdmin,middlewares.verifyNameExists,categoryControllers.create
+  middlewares.verifyToken,
+  middlewares.verifyAdmin,
+  middlewares.verifyNameExists,
+  categoryControllers.create
 );
 
-categoryRouter.get("",categoryControllers.read)
+categoryRouter.get("", categoryControllers.read);
 
-categoryRouter.get("/:id/realEstate",categoryControllers.retrieve)
+categoryRouter.get("/:id/realEstate", categoryControllers.retrieve);
 
 export { categoryRouter };

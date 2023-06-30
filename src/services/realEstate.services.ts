@@ -6,8 +6,7 @@ import {
   addressCreate,
   addressRepo,
   realEstateCreate,
-  realEstateRead,
-  realEstateRepo,
+   realEstateRepo,
 } from "../interfaces";
 
 const create = async (payload: realEstateCreate): Promise<RealEstate> => {
@@ -60,12 +59,15 @@ const create = async (payload: realEstateCreate): Promise<RealEstate> => {
   return realEstate;
 };
 
-const read = async (): Promise<realEstateRead> => {
-  const realEstateRepository: realEstateRepo=
+const read = async (): Promise<RealEstate[]> => {
+  const realEstateRepository: realEstateRepo =
     AppDataSource.getRepository(RealEstate);
-    
-  return await realEstateRepository.find();
+
+  const reads: RealEstate[] = await realEstateRepository.find({
+    relations: { address: true },
+  });
+
+  return reads;
 };
 
-
-export default { create,read };
+export default { create, read };

@@ -24,6 +24,7 @@ const read = async (): Promise<CategoryRead> => {
   const categoryRepository: CategoryRepo =
     AppDataSource.getRepository(Category);
   return await categoryRepository.find();
+  
 };
 const retrieve = async (categoryId: string): Promise<CategoryReturn> => {
   const categoryRepository: CategoryRepo =
