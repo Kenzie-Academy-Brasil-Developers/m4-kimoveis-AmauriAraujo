@@ -5,18 +5,20 @@ import {
   ScheduleCreate,
   UserRepo,
   realEstateRepo,
+  realEstateReturn,
   scheduleRepository,
 } from "../interfaces";
+import { realEstateReturnSchema } from "../schemas";
 
 const create = async (payload: ScheduleCreate, userId: number) => {
   const realEstateRepo: realEstateRepo =
     AppDataSource.getRepository(RealEstate);
 
-  const real_estate: RealEstate | null = await realEstateRepo.findOneBy({
+  const realEstate: RealEstate | null = await realEstateRepo.findOneBy({
     id: Number(payload.realEstateId),
   });
 
-  if (!real_estate) throw new AppError("RealEstate not found", 404);
+  if (!realEstate) throw new AppError("RealEstate not found", 404);
 
   const hour = payload.hour;
   const recortHour = hour.split(":")[0];
@@ -71,11 +73,29 @@ const create = async (payload: ScheduleCreate, userId: number) => {
   const schedule: Schedule = scheduleRepo.create({
     ...payload,
     user,
-    real_estate,
+    realEstate,
   });
   await scheduleRepo.save(schedule);
   const messages = { message: "Schedule created" };
   return messages;
 };
 
-export default { create };
+const read = async (id: string): Promise<realEstateReturn> => {
+  const realEstateRepository: realEstateRepo =
+    AppDataSource.getRepository(RealEstate);
+  const realEstateRelations: RealEstate | null =
+    await realEstateRepository.findOne({
+      where: { id: Number(id) },
+      relations: {
+        address: true,
+        category: true,
+        schedules: { user: true },
+      },
+    });
+
+  if (!realEstateRelations) throw new AppError("RealEstate not found", 404);
+
+  return realEstateRelations;
+};
+
+export default { create, read };

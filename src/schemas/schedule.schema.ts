@@ -15,9 +15,10 @@ const scheduleCreateSchema = scheduleSchema.omit({
   userId: true,
 });
 
-const scheduleReturnSchema = scheduleSchema.extend({
-  user: userReturnSchema,
-  realEstate: realEstateSchema,
-});
+const scheduleReturnSchema = scheduleSchema
+  .omit({ userId: true, realEstateId: true })
+  .extend({
+    user: userReturnSchema,
+  });
 
 export { scheduleCreateSchema, scheduleReturnSchema, scheduleSchema };

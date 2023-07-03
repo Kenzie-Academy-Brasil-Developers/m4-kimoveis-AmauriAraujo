@@ -25,7 +25,6 @@ const read = async (): Promise<UserRead> => {
 };
 
 const update = async (user: User, payload: UserUpdate): Promise<UserReturn> => {
-
   const repo: UserRepo = AppDataSource.getRepository(User);
 
   const userUpd: User = await repo.save({ ...user, ...payload });

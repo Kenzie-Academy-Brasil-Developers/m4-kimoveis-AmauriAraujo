@@ -6,7 +6,7 @@ import {
   addressCreate,
   addressRepo,
   realEstateCreate,
-   realEstateRepo,
+  realEstateRepo,
 } from "../interfaces";
 
 const create = async (payload: realEstateCreate): Promise<RealEstate> => {

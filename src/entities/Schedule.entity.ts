@@ -13,12 +13,11 @@ class Schedule {
   @Column({ type: "time" })
   hour: string;
 
-  @ManyToOne(()=>RealEstate,(re)=>re.schedules)
-  real_estate:RealEstate
-  
-  @ManyToOne(()=>User,(u)=>u.schedules)
-  user:User
-}
+  @ManyToOne(() => RealEstate, (re) => re.schedules)
+  realEstate: RealEstate;
 
+  @ManyToOne(() => User, (u) => u.schedules)
+  user: User;
+}
 
 export default Schedule;

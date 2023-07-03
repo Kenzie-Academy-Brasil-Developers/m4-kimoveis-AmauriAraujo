@@ -1,6 +1,7 @@
 import { z } from "zod";
-import { categoryCreateSchema, categorySchema } from "./category.schemas";
+import {  categorySchema } from "./category.schemas";
 import { addressCreateSchema, addressSchema } from "./address.schema";
+import { scheduleReturnSchema } from "./schedule.schema";
 
 const realEstateSchema = z.object({
   id: z.number().positive(),
@@ -9,8 +10,8 @@ const realEstateSchema = z.object({
   size: z.number().positive(),
   createdAt: z.string().or(z.date()),
   updatedAt: z.string().or(z.date()),
-  addressId: addressSchema,
-  categoryId: categoryCreateSchema.or(z.number()),
+  addressId: z.number(),
+  categoryId:z.number()
 });
 
 const realEstateCreateSchema = realEstateSchema
@@ -26,9 +27,17 @@ const realEstateCreateSchema = realEstateSchema
   });
 
 const realEstateReturnSchema = realEstateSchema
-  .omit({ addressId: true })
+  .omit({size:true,
+  sold:true,value:true,
+  updatedAt:true, 
+  addressId:true,
+  categoryId:true
+})
   .extend({
-    address: addressCreateSchema,
+    address: addressSchema,
+    category:categorySchema,
+    schedules:scheduleReturnSchema.array(),
+    
   });
 
 const realEstateReadSchema = realEstateSchema

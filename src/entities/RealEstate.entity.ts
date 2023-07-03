@@ -42,11 +42,11 @@ class RealEstate {
   @JoinColumn()
   address: Address;
 
-  @ManyToOne(() => Category,(c)=>c.realEstate)
+  @ManyToOne(() => Category, (c) => c.realEstate)
   category: Category;
 
-  @OneToMany(()=>Schedule,(sh)=>sh.real_estate)
-  schedules: Array<Schedule>
+  @OneToMany(() => Schedule, (sh) => sh.realEstate)
+  schedules: Array<Schedule>;
 }
 
 export default RealEstate;

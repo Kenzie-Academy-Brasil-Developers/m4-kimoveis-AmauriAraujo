@@ -23,7 +23,8 @@ userRouter.use("/:id", middlewares.idExists);
 userRouter.patch(
   "/:id",
   middlewares.validateBody(userUpdateSchema),
-  middlewares.verifyToken,middlewares.verifyOwner,
+  middlewares.verifyToken,
+  middlewares.verifyOwner,
   userControllers.update
 );
 
