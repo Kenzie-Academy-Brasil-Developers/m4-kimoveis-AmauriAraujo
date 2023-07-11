@@ -8,7 +8,6 @@ import {
   realEstateReturn,
   scheduleRepository,
 } from "../interfaces";
-import { realEstateReturnSchema } from "../schemas";
 
 const create = async (payload: ScheduleCreate, userId: number) => {
   const realEstateRepo: realEstateRepo =
